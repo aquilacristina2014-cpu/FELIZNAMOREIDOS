@@ -6,45 +6,55 @@
 <title>Meu Will ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap');
 
 body{
     margin:0;
     overflow-x:hidden;
-    background:linear-gradient(to bottom,#1a0000,#000);
-    color:white;
+    background:#8B0000;
     font-family:'Poppins',sans-serif;
+    color:white;
     text-align:center;
 }
 
-/* FUNDO ANIMADO */
-.background{
+/* FUNDO NOMES */
+.name-bg{
     position:fixed;
     width:100%;
     height:100%;
-    overflow:hidden;
     z-index:-1;
+    overflow:hidden;
 }
 
-.float{
+.nome{
     position:absolute;
-    font-size:28px;
-    animation:floatUp linear infinite;
-    opacity:0.7;
+    font-size:40px;
+    font-family:'Anton',sans-serif;
+    color:rgba(255,255,255,0.05);
+    white-space:nowrap;
+    animation:move 18s linear infinite;
 }
 
-@keyframes floatUp{
-    0%{transform:translateY(100vh) scale(0.8);}
-    100%{transform:translateY(-10vh) scale(1.2);}
+@keyframes move{
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-10vh);}
 }
 
 /* TÍTULO */
 h1{
     margin-top:40px;
     font-size:4rem;
+    text-shadow:0 0 25px #ff0000;
+}
+
+/* TEXTO */
+.texto{
+    max-width:900px;
+    margin:40px auto;
+    font-size:1.5rem;
+    line-height:1.6;
     font-family:'Playfair Display',serif;
-    color:#ffd6e0;
-    text-shadow:0 0 25px #ff0040;
+    min-height:120px;
 }
 
 /* VÍDEO */
@@ -57,21 +67,25 @@ h1{
 video{
     width:100%;
     border-radius:20px;
-    box-shadow:0 0 40px rgba(255,0,64,0.8);
+    box-shadow:0 0 40px rgba(0,0,0,0.8);
 }
 
-/* CARROSSEL LENTO */
+/* CARROSSEL */
 .carousel{
     width:90%;
     max-width:700px;
     margin:60px auto;
     overflow:hidden;
-    position:relative;
+    cursor:pointer;
 }
 
 .track{
     display:flex;
-    animation:scroll 60s linear infinite;
+    animation:scroll 20s linear infinite;
+}
+
+.carousel:hover .track{
+    animation-play-state:paused;
 }
 
 .track img{
@@ -79,7 +93,12 @@ video{
     max-width:600px;
     margin-right:25px;
     border-radius:20px;
-    box-shadow:0 0 25px rgba(255,0,64,0.7);
+    transition:transform 0.4s ease;
+    box-shadow:0 0 25px rgba(0,0,0,0.7);
+}
+
+.track img:hover{
+    transform:scale(1.1);
 }
 
 @keyframes scroll{
@@ -87,24 +106,40 @@ video{
     100%{transform:translateX(-50%);}
 }
 
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    z-index:10;
+}
+
+.modal img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:20px;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="background" id="background"></div>
+<div class="name-bg" id="nameBg"></div>
 
-<h1>Meu Will ❤️</h1>
+<h1>MEU WILL ❤️</h1>
 
-<!-- VÍDEO DO GOOGLE DRIVE -->
+<div class="texto" id="texto"></div>
+
 <div class="video-container">
     <video id="meuVideo" autoplay muted playsinline controls>
         <source src="https://drive.google.com/uc?export=download&id=17kHVTpyQJ9tN388D1xGvnKcRJvNiGroc" type="video/mp4">
-        Seu navegador não suporta o vídeo.
     </video>
 </div>
 
-<!-- IMAGENS PASSANDO DEVAGAR -->
 <div class="carousel">
     <div class="track">
         <img src="1.JPG">
@@ -113,7 +148,6 @@ video{
         <img src="IMG_0150.JPG">
         <img src="IMG_0151.JPG">
 
-        <!-- duplicadas para loop suave -->
         <img src="1.JPG">
         <img src="IMG-20191120-WA0129.jpg">
         <img src="IMG_0149.JPG">
@@ -122,34 +156,66 @@ video{
     </div>
 </div>
 
-<!-- MÚSICA -->
-<audio id="musica" autoplay loop>
+<div class="modal" id="modal">
+    <img id="modalImg">
+</div>
+
+<audio id="musica" autoplay loop muted>
     <source src="ytmp3free.cc_kenny-g-theme-from-dying-young-official-video-youtubemp3free.org.mp3" type="audio/mp3">
 </audio>
 
 <script>
 
-/* Volume da música 30% */
-const musica = document.getElementById("musica");
-musica.volume = 0.3;
+/* Música automática */
+const musica=document.getElementById("musica");
+window.addEventListener("load",()=>{
+    musica.volume=0.3;
+    musica.muted=false;
+    musica.play().catch(()=>{});
+});
 
-/* Desmutar vídeo automaticamente */
-const video = document.getElementById("meuVideo");
-video.muted = false;
+/* Desmutar vídeo */
+document.getElementById("meuVideo").muted=false;
 
-/* Criar corações e rosas flutuando */
-const background = document.getElementById("background");
+/* Texto digitando */
+const mensagem="Meu amor… você é meu destino, meu presente e meu futuro. Cada batida do meu coração carrega o seu nome. Eu escolheria você em todas as vidas. Você é o meu para sempre. ❤️";
+let i=0;
+function escrever(){
+    if(i<mensagem.length){
+        document.getElementById("texto").innerHTML+=mensagem.charAt(i);
+        i++;
+        setTimeout(escrever,35);
+    }
+}
+escrever();
 
+/* Fundo nomes */
+const bg=document.getElementById("nameBg");
 setInterval(()=>{
-    let elemento = document.createElement("div");
-    elemento.className="float";
-    elemento.style.left=Math.random()*100+"vw";
-    elemento.style.animationDuration=(10+Math.random()*6)+"s";
-    elemento.innerHTML = Math.random()>0.5 ? "❤️" : "🌹";
-    background.appendChild(elemento);
+    let nome=document.createElement("div");
+    nome.className="nome";
+    nome.innerText="MEU WILL ❤️";
+    nome.style.left=Math.random()*100+"vw";
+    nome.style.fontSize=(30+Math.random()*40)+"px";
+    nome.style.animationDuration=(10+Math.random()*15)+"s";
+    bg.appendChild(nome);
+    setTimeout(()=>nome.remove(),25000);
+},700);
 
-    setTimeout(()=>elemento.remove(),16000);
-},600);
+/* Modal imagem */
+const modal=document.getElementById("modal");
+const modalImg=document.getElementById("modalImg");
+
+document.querySelectorAll(".track img").forEach(img=>{
+    img.addEventListener("click",()=>{
+        modal.style.display="flex";
+        modalImg.src=img.src;
+    });
+});
+
+modal.addEventListener("click",()=>{
+    modal.style.display="none";
+});
 
 </script>
 
