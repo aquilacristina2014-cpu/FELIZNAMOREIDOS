@@ -57,31 +57,31 @@ h1{
     min-height:120px;
 }
 
-/* VÍDEO */
+/* VÍDEO YOUTUBE */
 .video-container{
     width:90%;
-    max-width:800px;
+    max-width:500px;
     margin:40px auto;
 }
 
-video{
+.video-container iframe{
     width:100%;
+    height:600px;
     border-radius:20px;
     box-shadow:0 0 40px rgba(0,0,0,0.8);
 }
 
-/* CARROSSEL */
+/* CARROSSEL AGRUPADO */
 .carousel{
-    width:90%;
-    max-width:700px;
+    width:95%;
     margin:60px auto;
     overflow:hidden;
-    cursor:pointer;
 }
 
 .track{
     display:flex;
-    animation:scroll 20s linear infinite;
+    gap:20px;
+    animation:scroll 25s linear infinite;
 }
 
 .carousel:hover .track{
@@ -89,16 +89,17 @@ video{
 }
 
 .track img{
-    width:100%;
-    max-width:600px;
-    margin-right:25px;
-    border-radius:20px;
+    width:250px;
+    height:350px;
+    object-fit:cover;
+    border-radius:15px;
     transition:transform 0.4s ease;
     box-shadow:0 0 25px rgba(0,0,0,0.7);
+    cursor:pointer;
 }
 
 .track img:hover{
-    transform:scale(1.1);
+    transform:scale(1.08);
 }
 
 @keyframes scroll{
@@ -135,9 +136,13 @@ video{
 <div class="texto" id="texto"></div>
 
 <div class="video-container">
-    <video id="meuVideo" autoplay muted playsinline controls>
-        <source src="https://drive.google.com/uc?export=download&id=17kHVTpyQJ9tN388D1xGvnKcRJvNiGroc" type="video/mp4">
-    </video>
+<iframe 
+src="https://www.youtube.com/embed/bj2CFB_h4CU?autoplay=1&mute=1&loop=1&playlist=bj2CFB_h4CU" 
+title="YouTube video"
+frameborder="0"
+allow="autoplay; encrypted-media"
+allowfullscreen>
+</iframe>
 </div>
 
 <div class="carousel">
@@ -148,6 +153,7 @@ video{
         <img src="IMG_0150.JPG">
         <img src="IMG_0151.JPG">
 
+        <!-- duplicadas para efeito infinito -->
         <img src="1.JPG">
         <img src="IMG-20191120-WA0129.jpg">
         <img src="IMG_0149.JPG">
@@ -160,22 +166,7 @@ video{
     <img id="modalImg">
 </div>
 
-<audio id="musica" autoplay loop muted>
-    <source src="ytmp3free.cc_kenny-g-theme-from-dying-young-official-video-youtubemp3free.org.mp3" type="audio/mp3">
-</audio>
-
 <script>
-
-/* Música automática */
-const musica=document.getElementById("musica");
-window.addEventListener("load",()=>{
-    musica.volume=0.3;
-    musica.muted=false;
-    musica.play().catch(()=>{});
-});
-
-/* Desmutar vídeo */
-document.getElementById("meuVideo").muted=false;
 
 /* Texto digitando */
 const mensagem="Meu amor… você é meu destino, meu presente e meu futuro. Cada batida do meu coração carrega o seu nome. Eu escolheria você em todas as vidas. Você é o meu para sempre. ❤️";
