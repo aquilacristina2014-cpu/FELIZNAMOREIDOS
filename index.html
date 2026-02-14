@@ -17,6 +17,7 @@ body{
     overflow-x:hidden;
 }
 
+/* Fundo animado */
 body::before{
     content:"";
     position:fixed;
@@ -33,14 +34,39 @@ body::before{
     to{transform:translate(-200px,-200px);}
 }
 
-h1{
+/* Título Neon */
+.neon{
     margin-top:40px;
-    font-size:3rem;
-    background:linear-gradient(45deg,#ff0040,#ffd700);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    font-size:3.5rem;
+    font-weight:800;
+    color:#fff;
+    text-shadow:
+        0 0 5px #ff0040,
+        0 0 10px #ff0040,
+        0 0 20px #ff0040,
+        0 0 40px #ff0040,
+        0 0 80px #ff0040;
+    animation:neonPulse 1.5s infinite alternate;
 }
 
+@keyframes neonPulse{
+    from{
+        text-shadow:
+        0 0 5px #ff0040,
+        0 0 10px #ff0040,
+        0 0 20px #ff0040,
+        0 0 40px #ff0040;
+    }
+    to{
+        text-shadow:
+        0 0 10px #ff3366,
+        0 0 20px #ff3366,
+        0 0 40px #ff3366,
+        0 0 80px #ff3366;
+    }
+}
+
+/* Texto digitando */
 .texto{
     max-width:800px;
     margin:30px auto;
@@ -48,6 +74,7 @@ h1{
     min-height:120px;
 }
 
+/* Botão */
 button{
     margin:30px;
     padding:18px 50px;
@@ -66,6 +93,7 @@ button:hover{
     transform:scale(1.1);
 }
 
+/* Carrossel */
 .carousel{
     position:relative;
     width:90%;
@@ -89,6 +117,7 @@ button:hover{
     to{opacity:1;}
 }
 
+/* Corações */
 .heart{
     position:fixed;
     color:#ff1744;
@@ -101,8 +130,7 @@ button:hover{
     100%{transform:translateY(110vh);}
 }
 
-.spotify{
-    margin-top:20px;
+iframe{
     display:none;
 }
 </style>
@@ -110,35 +138,29 @@ button:hover{
 
 <body>
 
-<h1>Meu Will ❤️</h1>
+<h1 class="neon">Meu Will ❤️</h1>
 
 <div class="texto" id="texto"></div>
 
 <button onclick="iniciar()">Clique aqui, meu amor 💖</button>
 
 <div class="carousel">
-    <div class="slide"><img src="1.jpeg"></div>
-    <div class="slide"><img src="2.jpeg"></div>
-    <div class="slide"><img src="3.jpeg"></div>
-    <div class="slide"><img src="4.jpeg"></div>
-    <div class="slide"><img src="5.jpeg"></div>
-    <div class="slide"><img src="6.jpeg"></div>
-    <div class="slide"><img src="12e191ea-9e20-48e6-b636-9d90570f4fe7.jpeg"></div>
+    <div class="slide"><img src="1.JPG"></div>
+    <div class="slide"><img src="IMG-20191120-WA0129.jpg"></div>
+    <div class="slide"><img src="IMG_0149.JPG"></div>
+    <div class="slide"><img src="IMG_0150.JPG"></div>
+    <div class="slide"><img src="IMG_0151.JPG"></div>
 </div>
 
-<!-- Spotify Embed -->
-<div class="spotify" id="spotifyPlayer">
-<iframe style="border-radius:12px"
-src="https://open.spotify.com/embed/track/4PuwwQ7TH82CjShcErJwuf?utm_source=generator"
-width="100%" height="152"
-frameBorder="0"
-allowfullscreen=""
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+<!-- Música -->
+<iframe id="player"
+src="https://www.youtube.com/embed/GX9wjjmBUes?enablejsapi=1"
+allow="autoplay">
 </iframe>
-</div>
 
 <script>
 
+/* Texto digitando */
 const mensagem = "Meu amor, você é o melhor presente que a vida me deu. Cada momento ao seu lado é mágico, cada sorriso seu ilumina meu mundo. Eu te amo mais do que palavras conseguem explicar ❤️";
 let i = 0;
 
@@ -150,6 +172,7 @@ function escrever(){
     }
 }
 
+/* Carrossel automático */
 let slideIndex = 0;
 const slides = document.getElementsByClassName("slide");
 
@@ -165,35 +188,17 @@ function mostrarSlides(){
     setTimeout(mostrarSlides,4000);
 }
 
-function fogos(){
-    for(let i=0;i<30;i++){
-        let fogo=document.createElement("div");
-        fogo.style.position="fixed";
-        fogo.style.left=Math.random()*100+"vw";
-        fogo.style.top=Math.random()*100+"vh";
-        fogo.style.width="6px";
-        fogo.style.height="6px";
-        fogo.style.borderRadius="50%";
-        fogo.style.background=`hsl(${Math.random()*360},100%,60%)`;
-        fogo.style.boxShadow="0 0 20px white";
-        fogo.style.zIndex="999";
-        fogo.style.transition="all 1s ease-out";
-        document.body.appendChild(fogo);
-        setTimeout(()=>{
-            fogo.style.transform="scale(8)";
-            fogo.style.opacity="0";
-        },50);
-        setTimeout(()=>fogo.remove(),1200);
-    }
-}
-
+/* Iniciar tudo */
 function iniciar(){
+
     escrever();
     mostrarSlides();
 
-    // Mostrar Spotify
-    document.getElementById("spotifyPlayer").style.display="block";
+    // tocar música
+    let iframe = document.getElementById("player");
+    iframe.src += "&autoplay=1";
 
+    // chuva contínua de corações
     setInterval(()=>{
         let heart=document.createElement("div");
         heart.className="heart";
@@ -203,13 +208,9 @@ function iniciar(){
         document.body.appendChild(heart);
         setTimeout(()=>heart.remove(),5000);
     },300);
-
-    fogos();
-    setInterval(fogos,2000);
 }
 
 </script>
 
 </body>
 </html>
-
