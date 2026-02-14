@@ -58,19 +58,6 @@ h1{
     padding:0 20px;
 }
 
-/* VIDEO */
-.video-container{
-    width:95%;
-    max-width:700px;
-    margin:30px auto;
-}
-
-video{
-    width:100%;
-    border-radius:20px;
-    box-shadow:0 0 40px rgba(0,0,0,0.8);
-}
-
 /* CARROSSEL */
 .carousel{
     width:100%;
@@ -135,12 +122,6 @@ video{
 
 <div class="texto" id="texto"></div>
 
-<div class="video-container">
-    <video id="video" autoplay muted loop playsinline>
-        <source src="vídeo.mp4.3gp" type="video/3gpp">
-    </video>
-</div>
-
 <div class="carousel">
     <div class="track">
         <img src="1.JPG">
@@ -203,24 +184,6 @@ document.querySelectorAll(".track img").forEach(img=>{
 modal.addEventListener("click",()=>{
     modal.style.display="none";
 });
-
-/* VÍDEO AUTO PLAY + SOM NO PRIMEIRO TOQUE */
-const video = document.getElementById("video");
-
-window.addEventListener("load",()=>{
-    video.play();
-});
-
-function ativarSom(){
-    video.muted = false;
-    video.volume = 1.0;
-    video.play();
-    document.removeEventListener("touchstart", ativarSom);
-    document.removeEventListener("click", ativarSom);
-}
-
-document.addEventListener("touchstart", ativarSom);
-document.addEventListener("click", ativarSom);
 
 </script>
 
