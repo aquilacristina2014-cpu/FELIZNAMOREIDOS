@@ -3,212 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Meu Will ❤️</title>
+<title>Meu Will ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap');
 
 body{
     margin:0;
-    font-family:'Poppins',sans-serif;
-    background:radial-gradient(circle at top,#2b0000,#000);
-    color:white;
-    text-align:center;
     overflow-x:hidden;
+    background:linear-gradient(to bottom,#1a0000,#000);
+    color:white;
+    font-family:'Poppins',sans-serif;
+    text-align:center;
 }
 
-/* Fundo animado */
-body::before{
-    content:"";
+/* FUNDO ANIMADO */
+.background{
     position:fixed;
-    width:200%;
-    height:200%;
-    background:radial-gradient(circle,#ff004033 1px, transparent 1px);
-    background-size:40px 40px;
-    animation:moveBg 25s linear infinite;
+    width:100%;
+    height:100%;
+    overflow:hidden;
     z-index:-1;
 }
 
-@keyframes moveBg{
-    from{transform:translate(0,0);}
-    to{transform:translate(-200px,-200px);}
+.float{
+    position:absolute;
+    font-size:28px;
+    animation:floatUp linear infinite;
+    opacity:0.7;
 }
 
-/* Título Neon */
-.neon{
+@keyframes floatUp{
+    0%{transform:translateY(100vh) scale(0.8);}
+    100%{transform:translateY(-10vh) scale(1.2);}
+}
+
+/* TÍTULO */
+h1{
     margin-top:40px;
-    font-size:3.5rem;
-    font-weight:800;
-    color:#fff;
-    text-shadow:
-        0 0 5px #ff0040,
-        0 0 10px #ff0040,
-        0 0 20px #ff0040,
-        0 0 40px #ff0040,
-        0 0 80px #ff0040;
-    animation:neonPulse 1.5s infinite alternate;
+    font-size:4rem;
+    font-family:'Playfair Display',serif;
+    color:#ffd6e0;
+    text-shadow:0 0 25px #ff0040;
 }
 
-@keyframes neonPulse{
-    from{
-        text-shadow:
-        0 0 5px #ff0040,
-        0 0 10px #ff0040,
-        0 0 20px #ff0040,
-        0 0 40px #ff0040;
-    }
-    to{
-        text-shadow:
-        0 0 10px #ff3366,
-        0 0 20px #ff3366,
-        0 0 40px #ff3366,
-        0 0 80px #ff3366;
-    }
-}
-
-/* Texto digitando */
-.texto{
-    max-width:800px;
-    margin:30px auto;
-    font-size:1.3rem;
-    min-height:120px;
-}
-
-/* Botão */
-button{
-    margin:30px;
-    padding:18px 50px;
-    border:none;
-    border-radius:40px;
-    font-size:1.2rem;
-    font-weight:bold;
-    background:linear-gradient(45deg,#ff0040,#990026);
-    color:white;
-    cursor:pointer;
-    box-shadow:0 0 25px #ff0040;
-    transition:0.3s;
-}
-
-button:hover{
-    transform:scale(1.1);
-}
-
-/* Carrossel */
-.carousel{
-    position:relative;
+/* VÍDEO */
+.video-container{
     width:90%;
-    max-width:600px;
+    max-width:800px;
     margin:40px auto;
 }
 
-.slide{
-    display:none;
-    animation:fade 1.2s ease-in-out;
-}
-
-.slide img{
+video{
     width:100%;
     border-radius:20px;
-    box-shadow:0 0 30px rgba(255,0,64,0.7);
+    box-shadow:0 0 40px rgba(255,0,64,0.8);
 }
 
-@keyframes fade{
-    from{opacity:0;}
-    to{opacity:1;}
+/* CARROSSEL LENTO */
+.carousel{
+    width:90%;
+    max-width:700px;
+    margin:60px auto;
+    overflow:hidden;
+    position:relative;
 }
 
-/* Corações */
-.heart{
-    position:fixed;
-    color:#ff1744;
-    font-size:22px;
-    animation:fall linear forwards;
+.track{
+    display:flex;
+    animation:scroll 60s linear infinite;
 }
 
-@keyframes fall{
-    0%{transform:translateY(-10vh);}
-    100%{transform:translateY(110vh);}
+.track img{
+    width:100%;
+    max-width:600px;
+    margin-right:25px;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(255,0,64,0.7);
 }
 
-iframe{
-    display:none;
+@keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
 }
+
 </style>
 </head>
 
 <body>
 
-<h1 class="neon">Meu Will ❤️</h1>
+<div class="background" id="background"></div>
 
-<div class="texto" id="texto"></div>
+<h1>Meu Will ❤️</h1>
 
-<button onclick="iniciar()">Clique aqui, meu amor 💖</button>
-
-<div class="carousel">
-    <div class="slide"><img src="1.JPG"></div>
-    <div class="slide"><img src="IMG-20191120-WA0129.jpg"></div>
-    <div class="slide"><img src="IMG_0149.JPG"></div>
-    <div class="slide"><img src="IMG_0150.JPG"></div>
-    <div class="slide"><img src="IMG_0151.JPG"></div>
+<!-- VÍDEO DO GOOGLE DRIVE -->
+<div class="video-container">
+    <video id="meuVideo" autoplay muted playsinline controls>
+        <source src="https://drive.google.com/uc?export=download&id=17kHVTpyQJ9tN388D1xGvnKcRJvNiGroc" type="video/mp4">
+        Seu navegador não suporta o vídeo.
+    </video>
 </div>
 
-<!-- Música -->
-<iframe id="player"
-src="https://www.youtube.com/embed/GX9wjjmBUes?enablejsapi=1"
-allow="autoplay">
-</iframe>
+<!-- IMAGENS PASSANDO DEVAGAR -->
+<div class="carousel">
+    <div class="track">
+        <img src="1.JPG">
+        <img src="IMG-20191120-WA0129.jpg">
+        <img src="IMG_0149.JPG">
+        <img src="IMG_0150.JPG">
+        <img src="IMG_0151.JPG">
+
+        <!-- duplicadas para loop suave -->
+        <img src="1.JPG">
+        <img src="IMG-20191120-WA0129.jpg">
+        <img src="IMG_0149.JPG">
+        <img src="IMG_0150.JPG">
+        <img src="IMG_0151.JPG">
+    </div>
+</div>
+
+<!-- MÚSICA -->
+<audio id="musica" autoplay loop>
+    <source src="ytmp3free.cc_kenny-g-theme-from-dying-young-official-video-youtubemp3free.org.mp3" type="audio/mp3">
+</audio>
 
 <script>
 
-/* Texto digitando */
-const mensagem = "Meu amor, você é o melhor presente que a vida me deu. Cada momento ao seu lado é mágico, cada sorriso seu ilumina meu mundo. Eu te amo mais do que palavras conseguem explicar ❤️";
-let i = 0;
+/* Volume da música 30% */
+const musica = document.getElementById("musica");
+musica.volume = 0.3;
 
-function escrever(){
-    if(i < mensagem.length){
-        document.getElementById("texto").innerHTML += mensagem.charAt(i);
-        i++;
-        setTimeout(escrever,40);
-    }
-}
+/* Desmutar vídeo automaticamente */
+const video = document.getElementById("meuVideo");
+video.muted = false;
 
-/* Carrossel automático */
-let slideIndex = 0;
-const slides = document.getElementsByClassName("slide");
+/* Criar corações e rosas flutuando */
+const background = document.getElementById("background");
 
-function mostrarSlides(){
-    for(let s of slides){
-        s.style.display="none";
-    }
-    slideIndex++;
-    if(slideIndex > slides.length){
-        slideIndex = 1;
-    }
-    slides[slideIndex-1].style.display="block";
-    setTimeout(mostrarSlides,4000);
-}
+setInterval(()=>{
+    let elemento = document.createElement("div");
+    elemento.className="float";
+    elemento.style.left=Math.random()*100+"vw";
+    elemento.style.animationDuration=(10+Math.random()*6)+"s";
+    elemento.innerHTML = Math.random()>0.5 ? "❤️" : "🌹";
+    background.appendChild(elemento);
 
-/* Iniciar tudo */
-function iniciar(){
-
-    escrever();
-    mostrarSlides();
-
-    // tocar música
-    let iframe = document.getElementById("player");
-    iframe.src += "&autoplay=1";
-
-    // chuva contínua de corações
-    setInterval(()=>{
-        let heart=document.createElement("div");
-        heart.className="heart";
-        heart.innerHTML="❤️";
-        heart.style.left=Math.random()*100+"vw";
-        heart.style.animationDuration=(2+Math.random()*3)+"s";
-        document.body.appendChild(heart);
-        setTimeout(()=>heart.remove(),5000);
-    },300);
-}
+    setTimeout(()=>elemento.remove(),16000);
+},600);
 
 </script>
 
