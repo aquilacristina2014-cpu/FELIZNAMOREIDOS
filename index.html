@@ -3,182 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PARA MEU WILL ❤️</title>
+<title>Para Meu Will ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
-
-:root {
-    --primary-black: #0a0a0a;
-    --secondary-black: #1a1a1a;
-    --card-black: #111111;
-    --accent-red: #ff0040;
-    --deep-red: #cc0033;
-    --dark-red: #990026;
-    --neon-red: #ff1744;
-    --gold: #ffd700;
-    --silver: #c0c0c0;
-    --white: #ffffff;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
 
 body{
+    margin:0;
     font-family:'Poppins',sans-serif;
-    background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 50%,#2a0a0a 100%);
-    min-height:100vh;
-    color:var(--silver);
-}
-
-/* HEADER */
-
-.header{
+    background:linear-gradient(135deg,#000,#1a0000);
+    color:white;
+    overflow-x:hidden;
     text-align:center;
-    padding:60px 20px 40px;
 }
 
-.header h1{
+/* Título */
+h1{
+    margin-top:40px;
     font-size:3rem;
-    background:linear-gradient(45deg,var(--accent-red),var(--gold));
+    background:linear-gradient(45deg,#ff0040,#ffd700);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
-.header p{
-    margin-top:15px;
-    font-size:1.2rem;
-}
-
-/* CARD */
-
-.love-card{
-    max-width:900px;
-    margin:40px auto;
-    padding:40px;
-    border-radius:20px;
-    background:linear-gradient(135deg,#111,#1a1a1a);
-    box-shadow:0 20px 40px rgba(0,0,0,0.7);
-    text-align:center;
-}
-
-.love-card h2{
-    font-size:2.5rem;
-    margin-bottom:25px;
-    background:linear-gradient(45deg,#fff,#ffd700);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.love-message{
-    font-size:1.2rem;
+/* Texto */
+.texto{
+    max-width:800px;
+    margin:30px auto;
+    font-size:1.3rem;
     line-height:1.8;
+    animation:fadeIn 2s ease-in-out;
 }
 
-.love-message p{
-    margin-bottom:20px;
+/* Galeria */
+.galeria{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    margin:40px 20px;
 }
 
-/* BOTÃO */
+.galeria img{
+    width:250px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(255,0,64,0.6);
+    transition:0.4s;
+}
 
-.surprise-btn{
-    margin-top:30px;
-    padding:18px 40px;
+.galeria img:hover{
+    transform:scale(1.08);
+}
+
+/* Botão */
+button{
+    margin:40px;
+    padding:20px 50px;
     border:none;
     border-radius:40px;
     font-size:1.2rem;
     font-weight:bold;
-    cursor:pointer;
-    background:linear-gradient(45deg,var(--accent-red),var(--deep-red));
+    background:linear-gradient(45deg,#ff0040,#990026);
     color:white;
+    cursor:pointer;
+    box-shadow:0 0 20px #ff0040;
     transition:0.3s;
 }
 
-.surprise-btn:hover{
-    transform:scale(1.05);
+button:hover{
+    transform:scale(1.1);
 }
 
-/* MENSAGEM ESPECIAL */
-
-.special-message{
-    display:none;
-    margin-top:40px;
-    padding:30px;
-    border-radius:20px;
-    background:#1a1a1a;
-    border:1px solid var(--accent-red);
-}
-
-.special-message h3{
-    margin-bottom:20px;
-    color:var(--gold);
-}
-
-/* FOOTER */
-
-.footer{
-    text-align:center;
-    padding:40px;
-    font-size:1.1rem;
-}
-
+/* Corações */
 .heart{
-    color:var(--accent-red);
-    animation:pulse 1s infinite;
+    position:fixed;
+    color:#ff1744;
+    font-size:25px;
+    animation:fall 4s linear infinite;
 }
 
-@keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.3);}
-    100%{transform:scale(1);}
+@keyframes fall{
+    0%{transform:translateY(-10vh);}
+    100%{transform:translateY(110vh);}
 }
 
-@media(max-width:600px){
-    .header h1{font-size:2rem;}
-    .love-card{padding:25px;}
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+iframe{
+    display:none;
 }
 </style>
 </head>
 
 <body>
 
-<header class="header">
-    <h1>Para MEU NENENGUINHO Meu Will ❤️</h1>
-    <p>Uma declaração de amor criada especialmente para você</p>
-</header>
+<h1>Meu Will ❤️</h1>
 
-<main class="love-card">
-    <h2>Minha Alma Gêmea 💕</h2>
+<div class="texto">
+Meu amor, você é o melhor presente que a vida me deu.  
+Cada momento ao seu lado é especial, cada sorriso seu ilumina meu mundo.  
+Eu te amo mais do que palavras conseguem explicar.
+</div>
 
-    <div class="love-message">
-        <p>Meu Will, você é a razão do meu despertar feliz e o último pensamento antes de dormir. Desde que você chegou na minha vida, cada dia se tornou mais colorido, mais doce e mais completo.</p>
+<button onclick="iniciar()">Clique aqui, meu amor 💖</button>
 
-        <p>Você é minha melodia favorita, meu porto seguro e minha inspiração diária. Com você descobri que o amor verdadeiro não é apenas um sentimento — é lar, é paz, é a certeza de que encontrei minha pessoa para sempre.</p>
-    </div>
+<div class="galeria">
+    <img src="12e191ea-9e20-48e6-b636-9d90570f4fe7.jpeg">
+    <img src="2.jpeg">
+    <img src="3.jpeg">
+    <img src="4.jpeg">
+    <img src="5.jpeg">
+    <img src="6.jpeg">
+</div>
 
-    <button class="surprise-btn" onclick="mostrarMensagem()">
-        ✨ Uma Surpresa Especial Para Você ✨
-    </button>
-
-    <div class="special-message" id="mensagemEspecial">
-        <h3>💖 Do Fundo Do Meu Coração 💖</h3>
-        <p>Meu Will, você é o presente mais lindo que a vida me deu. Cada sorriso seu ilumina meu mundo, cada abraço seu me faz sentir em casa, cada “eu te amo” seu é música para minha alma.</p>
-        <p>Quero que saiba: você é tudo que sempre sonhei e muito mais!</p>
-    </div>
-</main>
-
-<footer class="footer">
-    <p>Criado com todo <span class="heart">❤️</span> do universo</p>
-    <p>Para o Meu Will mais especial do mundo!</p>
-    <p>Feliz Dia dos Namorados, meu amor! 💑</p>
-</footer>
+<!-- Música YouTube -->
+<iframe id="player"
+src="https://www.youtube.com/embed/GX9wjjmBUes?enablejsapi=1"
+allow="autoplay">
+</iframe>
 
 <script>
-function mostrarMensagem(){
-    document.getElementById("mensagemEspecial").style.display="block";
+function iniciar(){
+
+    // tocar música
+    let iframe = document.getElementById("player");
+    iframe.src += "&autoplay=1";
+
+    // chuva de corações
+    for(let i=0;i<40;i++){
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.animationDuration=(2+Math.random()*3)+"s";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),5000);
+    }
 }
 </script>
 
