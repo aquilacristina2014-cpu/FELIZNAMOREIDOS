@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Meu Will ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#000,#1a0000);
+    color:white;
+    overflow-x:hidden;
+    text-align:center;
+}
+
+/* Título */
+h1{
+    margin-top:40px;
+    font-size:3rem;
+    background:linear-gradient(45deg,#ff0040,#ffd700);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* Texto */
+.texto{
+    max-width:800px;
+    margin:30px auto;
+    font-size:1.3rem;
+    line-height:1.8;
+    animation:fadeIn 2s ease-in-out;
+}
+
+/* Galeria */
+.galeria{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    margin:40px 20px;
+}
+
+.galeria img{
+    width:250px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(255,0,64,0.6);
+    transition:0.4s;
+}
+
+.galeria img:hover{
+    transform:scale(1.08);
+}
+
+/* Botão */
+button{
+    margin:40px;
+    padding:20px 50px;
+    border:none;
+    border-radius:40px;
+    font-size:1.2rem;
+    font-weight:bold;
+    background:linear-gradient(45deg,#ff0040,#990026);
+    color:white;
+    cursor:pointer;
+    box-shadow:0 0 20px #ff0040;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+/* Corações */
+.heart{
+    position:fixed;
+    color:#ff1744;
+    font-size:25px;
+    animation:fall 4s linear infinite;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-10vh);}
+    100%{transform:translateY(110vh);}
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+iframe{
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Meu Will ❤️</h1>
+
+<div class="texto">
+Meu amor, você é o melhor presente que a vida me deu.  
+Cada momento ao seu lado é especial, cada sorriso seu ilumina meu mundo.  
+Eu te amo mais do que palavras conseguem explicar.
+</div>
+
+<button onclick="iniciar()">Clique aqui, meu amor 💖</button>
+
+<div class="galeria">
+    <img src="12e191ea-9e20-48e6-b636-9d90570f4fe7.jpeg">
+    <img src="2.jpeg">
+    <img src="3.jpeg">
+    <img src="4.jpeg">
+    <img src="5.jpeg">
+    <img src="6.jpeg">
+</div>
+
+<!-- Música YouTube -->
+<iframe id="player"
+src="https://www.youtube.com/embed/GX9wjjmBUes?enablejsapi=1"
+allow="autoplay">
+</iframe>
+
+<script>
+function iniciar(){
+
+    // tocar música
+    let iframe = document.getElementById("player");
+    iframe.src += "&autoplay=1";
+
+    // chuva de corações
+    for(let i=0;i<40;i++){
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.animationDuration=(2+Math.random()*3)+"s";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),5000);
+    }
+}
+</script>
+
+</body>
+</html>
